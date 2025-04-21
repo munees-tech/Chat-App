@@ -7,22 +7,30 @@ import { useAuthStore } from "../store/useStoreAuth";
 import { formatMessageTime } from "../lib/utils.js";
 
 const ChatContainer = () => {
-  const { messages, getMessage, isMessagesLoading, selectedUser , subscribedToMessage ,unSubscribedMessage} = useChatStore();
+  const {
+    messages,
+    getMessage,
+    isMessagesLoading,
+    selectedUser,
+    subscribedToMessage,
+    unSubscribedMessage,
+  } = useChatStore();
+
   const { authUser } = useAuthStore();
-  const messageEndRef = useRef(null)
+  const messageEndRef = useRef(null);
 
   useEffect(() => {
     if (selectedUser?._id) {
       getMessage(selectedUser._id);
       subscribedToMessage();
-      return () => unSubscribedMessage()
+      return () => unSubscribedMessage();
     }
-  }, [selectedUser?._id, getMessage,subscribedToMessage,unSubscribedMessage]);
+  }, [selectedUser?._id, getMessage, subscribedToMessage, unSubscribedMessage]);
 
-  useEffect(()=>{
-    if(messageEndRef.current && messages)
-    messageEndRef.current.scrollIntoView({behavior:"smooth"})
-  },[messages])
+  useEffect(() => {
+    if (messageEndRef.current && messages)
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   if (isMessagesLoading) {
     return (
@@ -35,11 +43,10 @@ const ChatContainer = () => {
   }
 
   return (
-    
     <div className="flex-1 flex flex-col overflow-auto">
       <ChatHeader />
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-4">
         {messages.map((message) => {
           const isSentByAuthUser = message.senderId === authUser?._id;
 
@@ -51,7 +58,7 @@ const ChatContainer = () => {
             >
               {/* Avatar */}
               <div className="chat-image avatar">
-                <div className="size-10 rounded-full border">
+                <div className="size-8 sm:size-10 rounded-full border">
                   <img
                     src={
                       isSentByAuthUser
@@ -63,20 +70,20 @@ const ChatContainer = () => {
                 </div>
               </div>
 
-              {/* Message Header */}
+              {/* Header */}
               <div className="chat-header mb-1">
-                <time className="text-xs opacity-50 ml-1">
+                <time className="text-xs text-zinc-400 ml-1">
                   {formatMessageTime(message.createdAt)}
                 </time>
               </div>
 
-              {/* Message Content */}
-              <div className="chat-bubble flex flex-col">
+              {/* Message Bubble */}
+              <div className="chat-bubble flex flex-col max-w-xs sm:max-w-md break-words">
                 {message.image && (
                   <img
                     src={message.image}
                     alt="Attachment"
-                    className="sm:max-w-[200px] rounded-md mb-2"
+                    className="max-w-full rounded-md mb-2"
                   />
                 )}
                 {message.text && <p>{message.text}</p>}
