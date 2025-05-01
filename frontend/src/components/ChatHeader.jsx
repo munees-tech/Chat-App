@@ -12,7 +12,7 @@ const ChatHeader = () => {
         <div className="flex items-center gap-3">
           {/* Avatar */}
           <div className="avatar">
-            <div className="size-8 sm:size-10 rounded-full relative">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full relative">
               <img
                 src={selectedUser.profilePic || "avatar-placeholder.png"}
                 alt={selectedUser.fullName}
@@ -38,7 +38,7 @@ const ChatHeader = () => {
           className="lg:hidden text-zinc-500 hover:text-zinc-800 transition"
           aria-label="Close Chat"
         >
-          <X className="size-5 sm:size-6" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </div>
     </div>

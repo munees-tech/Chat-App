@@ -25,7 +25,7 @@ const Sidebar = () => {
       {/* Header */}
       <div className="border-b border-base-300 w-full px-4 py-3">
         <div className="flex items-center gap-2">
-          <Users className="size-5 sm:size-6" />
+          <Users className="w-5 h-5 sm:w-6 sm:h-6" />
           <span className="font-medium text-sm hidden lg:block">Contacts</span>
         </div>
 
@@ -60,12 +60,12 @@ const Sidebar = () => {
           >
             <div className="relative mx-auto lg:mx-0">
               <img
-                src={user.profilePic || "/avatar.png"}
+                src={user.profilePic || "/avatar-placeholder.png"}
                 alt={user.name}
-                className="size-10 sm:size-12 object-cover rounded-full"
+                className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full"
               />
               {onlineUsers.includes(user._id) && (
-                <span className="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full ring-2 ring-zinc-900" />
+                <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full ring-2 ring-zinc-900" />
               )}
             </div>
 

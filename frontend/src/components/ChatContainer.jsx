@@ -53,12 +53,14 @@ const ChatContainer = () => {
           return (
             <div
               key={message._id}
-              className={`chat ${isSentByAuthUser ? "chat-end" : "chat-start"}`}
+              className={`chat ${
+                isSentByAuthUser ? "chat-end" : "chat-start"
+              }`}
               ref={messageEndRef}
             >
               {/* Avatar */}
               <div className="chat-image avatar">
-                <div className="size-8 sm:size-10 rounded-full border">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border">
                   <img
                     src={
                       isSentByAuthUser
@@ -78,7 +80,7 @@ const ChatContainer = () => {
               </div>
 
               {/* Message Bubble */}
-              <div className="chat-bubble flex flex-col max-w-xs sm:max-w-md break-words">
+              <div className="chat-bubble flex flex-col max-w-[75%] sm:max-w-md break-words">
                 {message.image && (
                   <img
                     src={message.image}

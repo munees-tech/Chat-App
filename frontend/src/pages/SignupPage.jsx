@@ -19,22 +19,27 @@ const SignupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      signUp(formData);}
+      signUp(formData);
+    }
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
       {/* Left Side */}
       <div className="flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md space-y-6">
           <div className="text-center mb-8">
             <div className="flex flex-col items-center gap-2 group">
-              <div className="size-12 rounded-xl bg-primary/10 flex justify-center items-center group-hover:bg-primary/20 transition-colors">
-                <MessageSquare className="size-6 text-primary" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex justify-center items-center group-hover:bg-primary/20 transition-colors">
+                <MessageSquare className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
             </div>
-            <h1 className="text-2xl font-bold mt-2">Create Your Account</h1>
-            <p className="text-base-content/60">Start With Your Free Account</p>
+            <h1 className="text-2xl sm:text-3xl font-bold mt-2">
+              Create Your Account
+            </h1>
+            <p className="text-sm sm:text-base text-base-content/60">
+              Start With Your Free Account
+            </p>
           </div>
 
           {/* Form */}
@@ -45,10 +50,10 @@ const SignupPage = () => {
                 <span className="label-text font-medium">Full Name</span>
               </label>
               <div className="relative">
-                <User className="size-5 text-base-content/40 absolute left-3 top-3" />
+                <User className="w-5 h-5 text-base-content/40 absolute left-3 top-3" />
                 <input
                   type="text"
-                  className="input input-bordered w-full pl-6"
+                  className="input input-bordered w-full pl-10"
                   placeholder="Munees"
                   value={formData.fullName}
                   onChange={(e) =>
@@ -64,7 +69,7 @@ const SignupPage = () => {
                 <span className="label-text font-medium">Email</span>
               </label>
               <div className="relative">
-                <Mail className="size-5 text-base-content/40 absolute left-3 top-3" />
+                <Mail className="w-5 h-5 text-base-content/40 absolute left-3 top-3" />
                 <input
                   type="email"
                   className="input input-bordered w-full pl-10"
@@ -83,7 +88,7 @@ const SignupPage = () => {
                 <span className="label-text font-medium">Password</span>
               </label>
               <div className="relative">
-                <Lock className="size-5 text-base-content/40 absolute left-3 top-3" />
+                <Lock className="w-5 h-5 text-base-content/40 absolute left-3 top-3" />
                 <input
                   type={showPassword ? "text" : "password"}
                   className="input input-bordered w-full pl-10"
@@ -114,12 +119,14 @@ const SignupPage = () => {
               {isSigningUp ? "Signing Up..." : "Sign Up"}
             </button>
           </form>
-          </div>
+        </div>
       </div>
 
       {/* Right Side */}
-      <div className="hidden lg:flex items-center justify-center bg-primary text-white">
-        <h2 className="text-4xl font-bold">Welcome to Chat App!</h2>
+      <div className="hidden lg:flex items-center justify-center bg-primary text-white p-6">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center">
+          Welcome to Chat App!
+        </h2>
       </div>
     </div>
   );
